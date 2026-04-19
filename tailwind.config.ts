@@ -54,7 +54,7 @@ const config: Config = {
       },
       maxWidth: {
         prose: '42rem',
-        reading: '38rem',
+        reading: '46rem',
       },
       spacing: {
         '18': '4.5rem',

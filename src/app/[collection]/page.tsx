@@ -10,6 +10,7 @@ import {
 import { githubEditUrl, site } from '@/lib/site';
 import { Markdown } from '@/lib/markdown';
 import { ReadingProgress } from '@/components/ReadingProgress';
+import { ChapterSidebar } from '@/components/ChapterSidebar';
 
 type ChapterWithBody = PostSummary & { body: string };
 
@@ -63,17 +64,24 @@ export default async function CollectionPage({
           totalChars={totalChars}
           minutes={minutes}
         />
-        <TableOfContents chapters={chapters} />
+        <MobileTableOfContents chapters={chapters} />
         <div className="relative z-10">
-          <div className="mx-auto max-w-reading px-6 pb-20">
-            {chapters.map((ch, i) => (
-              <ChapterBlock
-                key={ch.slug}
-                index={i + 1}
-                total={chapters.length}
-                chapter={ch}
-              />
-            ))}
+          <div className="mx-auto max-w-6xl px-6 pb-20">
+            <div className="lg:grid lg:grid-cols-[13rem_1fr] lg:gap-12">
+              <aside className="hidden lg:block">
+                <ChapterSidebar chapters={chapters} />
+              </aside>
+              <main className="lg:max-w-reading">
+                {chapters.map((ch, i) => (
+                  <ChapterBlock
+                    key={ch.slug}
+                    index={i + 1}
+                    total={chapters.length}
+                    chapter={ch}
+                  />
+                ))}
+              </main>
+            </div>
           </div>
         </div>
         <EndOfCollection c={c} />
@@ -123,12 +131,16 @@ function Hero({
   );
 }
 
-function TableOfContents({ chapters }: { chapters: ChapterWithBody[] }) {
+function MobileTableOfContents({
+  chapters,
+}: {
+  chapters: ChapterWithBody[];
+}) {
   if (chapters.length <= 1) return null;
   return (
     <nav
       aria-label="目录"
-      className="relative z-10 border-b border-ink/10 bg-paper-warm/40"
+      className="relative z-10 border-b border-ink/10 bg-paper-warm/40 lg:hidden"
     >
       <div className="mx-auto max-w-5xl px-6 py-10">
         <div className="eyebrow text-ink/50">目录 · Contents</div>
