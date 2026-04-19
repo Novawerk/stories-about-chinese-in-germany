@@ -66,7 +66,7 @@ export default async function CollectionPage({
         />
         <MobileTableOfContents chapters={chapters} />
         <div className="relative z-10">
-          <div className="mx-auto max-w-6xl px-6 pb-20">
+          <div className="mx-auto max-w-6xl px-6 pt-16 pb-20">
             <div className="lg:grid lg:grid-cols-[13rem_1fr] lg:gap-12">
               <aside className="hidden lg:block">
                 <ChapterSidebar chapters={chapters} />
