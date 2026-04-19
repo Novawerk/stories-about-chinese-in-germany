@@ -1,11 +1,12 @@
+/* Chinese literary fonts via CDN — LXGW WenKai Screen for body,
+ * Noto Serif SC for display. Both are free / open-source.
+ * @import must come before any other rule per the CSS spec. */
+@import url('https://cdn.jsdelivr.net/npm/cn-fontsource-lxgw-wen-kai-screen@latest/font.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Chinese literary fonts via CDN — LXGW WenKai Screen for body,
- * Noto Serif SC for display. Both are free / open-source. */
-@import url('https://cdn.jsdelivr.net/npm/cn-fontsource-lxgw-wen-kai-screen@latest/font.css');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   color-scheme: light;
