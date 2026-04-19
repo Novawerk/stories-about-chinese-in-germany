@@ -1,0 +1,57 @@
+name: 投稿 · New Story
+description: 提交一篇新的故事（无需懂 Git，直接贴文字即可）
+title: "[投稿] "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你愿意把自己的故事写下来。下面这些字段不需要都填，能填多少填多少——我们会在 Issue 里和你一起把它变成一篇稿件。
+  - type: dropdown
+    id: collection
+    attributes:
+      label: 投给哪个栏目？
+      description: 如果是全新栏目，选「新开一个栏目」。
+      options:
+        - 创业往事（entrepreneur）
+        - 小厂打工人（small-company）
+        - 再启程前的故事（management）
+        - 新开一个栏目
+    validations:
+      required: true
+  - type: input
+    id: new_collection_name
+    attributes:
+      label: （可选）新栏目名称
+      description: 只有在上面选了「新开一个栏目」时才填。
+      placeholder: "例：留学记事"
+  - type: input
+    id: title
+    attributes:
+      label: 稿件标题
+      placeholder: "例：我在鲁尔河畔的那个夏天"
+    validations:
+      required: true
+  - type: textarea
+    id: excerpt
+    attributes:
+      label: 一句话摘要
+      description: 80 字以内，会作为首页/目录的介绍。
+      placeholder: "我第一次推开办公室的门时，外面正在下雪。"
+  - type: textarea
+    id: body
+    attributes:
+      label: 正文
+      description: 直接用 Markdown 或纯文字。放心贴就好，不用担心格式。
+      placeholder: |
+        那一年我刚到德国……
+      render: markdown
+    validations:
+      required: true
+  - type: checkboxes
+    id: license
+    attributes:
+      label: 版权确认
+      options:
+        - label: 我同意这篇稿件以 CC BY-NC-SA 4.0 协议发布
+          required: true

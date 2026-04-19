@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 投稿指南
+    url: https://stories.novawerk.io/submit
+    about: 查看详细的投稿约定（栏目 / 文件名 / frontmatter）
