@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 /**
- * Sync handwritten Markdown from root-level 🇩🇪... folders into `content/`
+ * Sync handwritten Markdown from `articles/🇩🇪...` folders into `content/`
  * where the Next.js site expects it.
  *
  * Runs automatically before `next dev` and `next build` (see package.json).
  *
  * Conventions for source folders:
- *   - Any top-level directory whose name starts with 🇩🇪 is treated as a
- *     collection. Add more by creating a new folder — no code changes needed.
+ *   - Any directory under `articles/` whose name starts with 🇩🇪 is treated
+ *     as a collection. Add more by creating a new folder — no code changes
+ *     needed.
  *   - Inside a collection, every `.md` file (recursively — `正文/` too) becomes
  *     one post. Files named `完整故事.md` and `修改意见.md` are skipped
  *     (former is auto-generated; latter is AI editor notes).
@@ -22,6 +23,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ARTICLES = path.join(ROOT, 'articles');
 const OUT = path.join(ROOT, 'content');
 
 const SKIP_FILES = new Set(['完整故事.md', '修改意见.md']);
@@ -190,7 +192,7 @@ async function processCollection(absDir, folderName) {
       title,
       order,
       excerpt,
-      sourcePath: path.join(folderName, rel),
+      sourcePath: path.join('articles', folderName, rel),
       raw: body,
       frontmatter: fm,
     });
@@ -204,7 +206,7 @@ async function main() {
   await fs.rm(OUT, { recursive: true, force: true });
   await fs.mkdir(OUT, { recursive: true });
 
-  const entries = await fs.readdir(ROOT, { withFileTypes: true });
+  const entries = await fs.readdir(ARTICLES, { withFileTypes: true });
   const collectionDirs = entries
     .filter((e) => e.isDirectory() && e.name.startsWith('🇩🇪'))
     .map((e) => e.name)
@@ -214,7 +216,7 @@ async function main() {
   const slugSeen = new Set();
 
   for (const folderName of collectionDirs) {
-    const absDir = path.join(ROOT, folderName);
+    const absDir = path.join(ARTICLES, folderName);
     const { meta, posts } = await processCollection(absDir, folderName);
 
     if (slugSeen.has(meta.slug)) {

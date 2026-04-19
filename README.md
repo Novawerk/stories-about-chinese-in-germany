@@ -6,22 +6,22 @@
 
 ## 栏目
 
-- [🇩🇪 创业往事 · 我开软件公司的七年](./🇩🇪创业往事-我开软件公司的七年) — 在德国创业七年的心路历程。
-- [🇩🇪 小厂打工人 · 不定期汇报](./🇩🇪小厂打工人不定期汇报) — 在德国中小型企业工作的日常与观察。
-- [🇩🇪 再启程前的故事 · 在德国公司做管理](./🇩🇪再启程前的故事%20-%20在德国公司做管理) — 一段在德国公司做管理的经历。
+- [🇩🇪 创业往事 · 我开软件公司的七年](./articles/🇩🇪创业往事-我开软件公司的七年) — 在德国创业七年的心路历程。
+- [🇩🇪 小厂打工人 · 不定期汇报](./articles/🇩🇪小厂打工人不定期汇报) — 在德国中小型企业工作的日常与观察。
+- [🇩🇪 再启程前的故事 · 在德国公司做管理](./articles/🇩🇪再启程前的故事%20-%20在德国公司做管理) — 一段在德国公司做管理的经历。
 
 ## 怎么投稿
 
 两种方式，都是 PR 工作流：
 
 1. **不熟 Git**：[打开一个投稿 Issue](https://github.com/Novawerk/stories-about-chinese-in-germany/issues/new?template=new-story.yml)，填模板。
-2. **熟 Git**：把 `.md` 文件放到对应的 `🇩🇪` 开头的文件夹，提 PR。
+2. **熟 Git**：把 `.md` 文件放到 `articles/` 下对应的 `🇩🇪` 开头的文件夹，提 PR。
 
 详细约定见站内的 [投稿指南](https://stories.novawerk.io/submit)。
 
 ## 文件夹约定
 
-- 每个以 `🇩🇪` 开头的顶层文件夹是一个**栏目**。新栏目 = 新建这样的文件夹，不用改代码。
+- 稿件都放在 `articles/` 下。每个以 `🇩🇪` 开头的子文件夹是一个**栏目**。新栏目 = 新建这样的文件夹，不用改代码。
 - 栏目里每个 `.md` 是一篇稿件。命名推荐 `N-标题.md`（章节顺序），正文第一行可以是 `N/标题` 或 `# 标题`，也可以直接开始正文。
 - 栏目里可以放 `meta.json` 覆盖 slug / title / subtitle / tagline / order。
 - 稿件可以在 `.md` 顶部加 frontmatter 覆盖 title / order / excerpt / slug。
@@ -35,7 +35,7 @@ pnpm install
 pnpm dev          # 自动触发 scripts/sync-content.mjs，然后开 http://localhost:3000
 ```
 
-`pnpm dev` 和 `pnpm build` 都会先跑 `scripts/sync-content.mjs`——它扫描所有 🇩🇪 文件夹，把稿件按 slug 映射到 `content/`（被 `.gitignore`），让 Next.js 能 import。
+`pnpm dev` 和 `pnpm build` 都会先跑 `scripts/sync-content.mjs`——它扫描 `articles/` 下所有 🇩🇪 文件夹，把稿件按 slug 映射到 `content/`（被 `.gitignore`），让 Next.js 能 import。
 
 ## 部署
 

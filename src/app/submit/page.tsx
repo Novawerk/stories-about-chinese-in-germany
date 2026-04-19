@@ -40,7 +40,7 @@ export default function SubmitPage() {
           <Path
             step="02"
             title="熟悉 Git：直接开 Pull Request"
-            body="在仓库根目录找到或新建对应的 🇩🇪 开头的文件夹，把稿件放进去，开个 PR。我们会在 PR 里和你一起打磨。"
+            body="在仓库的 articles/ 下找到或新建对应的 🇩🇪 开头的文件夹，把稿件放进去，开个 PR。我们会在 PR 里和你一起打磨。"
             cta={{ href: site.repo, label: '打开 GitHub 仓库 →' }}
           />
 
@@ -86,7 +86,7 @@ function Path({
 
 function Convention() {
   const rules: Array<[string, string]> = [
-    ['栏目', '每个 🇩🇪 开头的文件夹是一个栏目。新开栏目就是新建一个文件夹。'],
+    ['栏目', 'articles/ 下每个 🇩🇪 开头的文件夹是一个栏目。新开栏目就是新建一个这样的文件夹。'],
     [
       '稿件',
       '每篇稿件是一个 .md 文件。文件名用 `N-标题.md`，其中 N 是章节顺序；正文第一行写 `N/标题` 或 `# 标题` 都行，不写也没关系——会用文件名补上。',

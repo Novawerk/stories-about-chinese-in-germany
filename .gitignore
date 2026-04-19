@@ -30,5 +30,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# generated content (synced from 🇩🇪... folders by scripts/sync-content.mjs)
+# generated content (synced from articles/🇩🇪... by scripts/sync-content.mjs)
 content/
